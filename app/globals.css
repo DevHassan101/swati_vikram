@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+/* @theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+} */
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.bg-header {
+  background-color: rgba(194, 24, 91, 0.55);
+  backdrop-filter: blur(3px);
+}
+
+.hero-section {
+  width: 100%;
+  background-image: linear-gradient(to bottom right, #c2185b, #d81b60, #e91e8c, #f48fb1), url('/images/2.png');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: lighten;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(255, 180, 210, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.footer-section {
+  width: 100%;
+  background-image: linear-gradient(to bottom right, #c2185b, #d81b60, #e91e8c, #f48fb1), url('/images/2.png');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: lighten;
+  padding-bottom: 50px;
+}
+
+.hero-section .hero-image {
+  width: 100%;
+}
+
+.hero-glow-text {
+  text-shadow: 0 0 25px rgba(255, 180, 210, 0.6), 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-btn-glow {
+  box-shadow: 0 0 18px rgba(255, 105, 180, 0.5), 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.hero-btn-glow:hover {
+  box-shadow: 0 0 28px rgba(255, 105, 180, 0.8), 0 6px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.hero-img-glow {
+  filter: drop-shadow(0 0 18px rgba(233, 30, 140, 0.4));
+}
+
+/* ── Unified site background ── */
+.site-bg {
+  background: linear-gradient(180deg,
+    #c2185b 0%,
+    #d81b60 20%,
+    #e91e8c 40%,
+    #f06292 58%,
+    #e91e8c 75%,
+    #d81b60 90%,
+    #c2185b 100%
+  );
+}
+
+/* Sections inside the wrapper inherit the parent bg */
+.site-bg .about-section,
+.site-bg .profile-section,
+.site-bg .blogs-section,
+.site-bg .testimonials-section {
+  background: transparent;
+}
+
+.about-section {
+  background-image: linear-gradient(-200deg, #c2185b, #d81b60, #e91e8c, #f06292, #d81b60);
+}
+
+.profile-section {
+  background-image: linear-gradient(200deg, #c2185b, #d81b60, #e91e8c 35%, #f06292, #e91e8c, #f48fb1, #e91e8c, #c2185b);
+}
+
+.blogs-section {
+  background-image: linear-gradient(-200deg, #c2185b, #d81b60, #e91e8c 38%, #f06292, #f48fb1);
+}
+
+.model-overlay {
+  background: linear-gradient(to bottom, transparent, transparent, rgba(233, 30, 140, 0.5));
+}
+
+.main-blog-section {
+  width: 100%;
+  background-image: linear-gradient(200deg, #c2185b, #d81b60, #e91e8c 35%, #f06292, #f48fb1, #e91e8c, #c2185b);
+}
+
+.main-model-section {
+  width: 100%;
+  background-image: linear-gradient(200deg, #c2185b, #d81b60, #e91e8c 35%, #f06292, #f48fb1, #e91e8c, #c2185b);
+}
+
+.main-service-section {
+  width: 100%;
+  background-image: linear-gradient(200deg, #c2185b, #d81b60, #e91e8c 35%, #f06292, #f48fb1, #e91e8c, #c2185b);
+}

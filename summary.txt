@@ -1,0 +1,382 @@
+================================================================
+  SWATI-RELODED — THEME & DESIGN WORK SUMMARY
+  Last Updated: 2026-03-28
+================================================================
+
+PROJECT TYPE
+------------
+Next.js 16 (App Router) | TypeScript | Tailwind CSS 4
+Full-stack escort/companion platform — Noida & Ghaziabad
+DB: PostgreSQL via Supabase (Prisma ORM)
+Auth: JWT + bcryptjs (HTTP-only cookies)
+
+
+================================================================
+THEME OVERVIEW
+================================================================
+
+OLD THEME   → Dark Red (#c40000) + Purple — "party/nightclub" vibe
+NEW THEME   → Bright Romantic Pink/Rose — dating site feel
+
+Core Color Palette (globals.css):
+  #c2185b  →  Deep Rose       (darkest tone)
+  #d81b60  →  Vivid Rose
+  #e91e8c  →  Hot Pink        (primary accent)
+  #f06292  →  Medium Pink
+  #f48fb1  →  Light Blush     (lightest tone)
+
+White Glass Style (used on bright bg cards):
+  bg-white/10  backdrop-blur-sm  border-white/20
+  hover: border-white/35  shadow glow
+
+Dark Glass Style (used on dark cards over pink bg):
+  bg-gradient-to-br from-rose-950 via-pink-950 to-rose-900
+  border-pink-400/25  shadow-[0_8px_32px_rgba(0,0,0,0.5)]
+
+
+================================================================
+STANDARD SECTION PADDING (all homepage sections)
+================================================================
+
+  pt-16 pb-20 px-8 md:px-12 lg:px-20
+
+Applied to: AboutUs, ModelCards, BlogCards, Testimonial, Faqs
+NOTE: No max-w-7xl mx-auto wrapper inside sections — content
+      goes edge-to-edge controlled by section padding only.
+
+
+================================================================
+FILES CHANGED — SESSION 1 (2026-03-27)
+================================================================
+
+1. app/globals.css
+------------------
+- .bg-header          → rgba(194,24,91,0.55) — pink navbar bg
+- .hero-section       → bright gradient + pattern overlay
+- .hero-section::before → radial center glow
+- .footer-section     → same bright gradient as hero
+- .hero-glow-text     → pink text-shadow utility
+- .hero-btn-glow      → button glow + hover lift utility
+- .hero-img-glow      → pink drop-shadow on model images
+- .site-bg            → unified 180deg vertical gradient for homepage
+                        #c2185b → #e91e8c → #f06292 → back
+- .site-bg overrides  → about/profile/blogs/testimonials sections
+                        set to transparent inside site-bg wrapper
+- .about-section      → standalone bright pink gradient
+- .profile-section    → standalone bright pink gradient
+- .blogs-section      → standalone bright pink gradient
+- .main-blog/model/service-section → bright pink gradients
+- .model-overlay      → updated to pink tint
+
+
+2. app/(website)/page.tsx
+--------------------------
+- All homepage sections wrapped in <main className="site-bg">
+- Sections active: AboutUs, ModelCards, BlogCards,
+  Testimonials, FAQSection
+- NOTE: HeroSection and WelcomePopup currently commented out
+  (theme applied to files, just disabled in page)
+
+
+3. app/(website)/layout.tsx
+----------------------------
+- Navbar, Footer, ActionButtons currently commented out
+  (uncomment when ready to enable)
+
+
+4. app/(website)/components/Navbar.tsx
+---------------------------------------
+- Theme: red → pink/rose
+- Scrolled state: bg-rose-950/95 + backdrop-blur-md + shadow
+- Other pages: bg-rose-900/90 + backdrop-blur-sm
+- Logo accent: text-red-300 → text-pink-300 + tracking-wide
+- Nav underline: bg-red-500 → bg-pink-400 (h-[2px])
+- Contact button: gradient from-pink-500 to-rose-500 + hover:scale-105
+- Mobile menu: backdrop-blur-md + border-pink-300/20
+- Active link: text-pink-300
+
+
+5. app/(website)/components/HeroSection.tsx
+--------------------------------------------
+NOTE: Commented out in page.tsx. Theme applied, ready to enable.
+- Text box: glass effect on desktop (bg-white/5 backdrop-blur-sm)
+- "PARTY" glow: text-red-500 → text-pink-400 + hero-glow-text
+- Button: hero-btn-glow class + text/bg pink
+- Images: hero-img-glow (pink drop-shadow)
+
+
+6. app/(website)/components/AboutUs.tsx
+----------------------------------------
+- Section padding: pt-16 pb-20 px-8 md:px-12 lg:px-20
+- Sub-heading: "─── About Us ───" decorative style, text-pink-300
+- Feature icons: glass style bg-white/10 backdrop-blur-sm
+- Button: gradient from-pink-500 to-rose-500
+- Floating badges: Available Now, Top Rated, 500+ Clients, 100% Discreet
+- Purple → Pink replacements throughout
+
+
+7. app/(website)/components/ModelCards.tsx  [Session 1]
+--------------------------------------------------------
+- Section padding: pt-16 pb-20 px-8 md:px-12 lg:px-20
+- Sub-heading: "─── Meet Our Girls ───" decorative style
+- Brand name: "Lollipop Escorts" → "SwatiKaur"
+- Cards: rounded-2xl, dark overlay on hover (rose-950/92)
+- Buttons: gradient from-pink-500 to-rose-500
+
+
+8. app/(website)/components/BlogCards.tsx
+------------------------------------------
+COMPLETE REDESIGN (reference-inspired magazine style):
+- Section padding: pt-16 pb-20 px-8 md:px-12 lg:px-20
+- Grid: 3 cols max (xl:grid-cols-3)
+- Cards: bg-white/10 backdrop-blur-sm border-white/20 (glass)
+- Image: h-60, zoom on hover
+- Date badge: top-right, gradient from-pink-500 to-rose-500 pill
+- Title: text-base font-bold text-white, line-clamp-2
+- Description: text-sm text-white/65 line-clamp-5 text-justify
+- BOTTOM BAR: bg-gradient-to-r from-pink-600 to-rose-500
+  Left: clock icon + read time (calculated from word count)
+  Right: comment icon + "0 Comments"
+
+
+9. app/(website)/components/Testimonial.tsx
+--------------------------------------------
+NOTE: Renamed from Testiominal.tsx → Testimonial.tsx (typo fixed).
+      Import in page.tsx updated to match.
+
+COMPLETE REDESIGN (reference two-column layout):
+- Section padding: pt-16 pb-20 px-8 md:px-12 lg:px-20
+- No max-w-7xl wrapper (removed for alignment consistency)
+
+LEFT CARD (33%):
+  - Gradient border wrapper: from-pink-300 via-rose-400 to-pink-500
+  - rounded-3xl rounded-br-[90px] — signature cut corner shape
+  - Image: testi-pic.jpg, h-[440px] lg:h-[600px]
+  - Top badge: "Happy Clients" glass pill + pulse dot
+  - Bottom label: "500+ Reviews" + growing underline on hover
+
+RIGHT SECTION (flex-1):
+  - Badge + title "What Our Clients Say's" + description
+  - Prev/Next nav buttons — top right (glass → pink on hover)
+  - Swiper: 1 col mobile / 2 col tablet+, autoplay 4s
+
+TESTIMONIAL CARDS (dark — contrasts bright pink bg):
+  - bg-gradient-to-br from-rose-950 via-pink-950 to-rose-900
+  - border-pink-400/25 — subtle glow border
+  - rounded-2xl rounded-br-[60px] — cut corner (reference style)
+  - Quote icon: top-right glass box, fill-pink-300
+  - Avatar: gradient circle + green online dot
+  - Role: bg-pink-500/25 pill badge
+  - Stars: yellow fill-yellow-400, glass pill bottom-left
+  - Hover: lift + stronger shadow + pink glow
+
+
+10. app/(website)/components/Faqs.tsx
+--------------------------------------
+COMPLETE REDESIGN (reference two-column layout):
+- Section padding: pt-16 pb-20 px-8 md:px-12 lg:px-20
+- No max-w-7xl wrapper (removed for alignment consistency)
+
+LEFT BOX (36%):
+  - bg-gradient-to-br from-rose-950 via-pink-950 to-rose-900
+  - border-pink-400/30, pink glow shadow
+  - Grid pattern overlay (subtle)
+  - FAQ's badge (pulse dot) + heading + WhatsApp CTA button
+  - Decorative "?" mark background
+
+RIGHT ACCORDION (flex-1):
+  - CLOSED: solid gradient from-pink-500 to-rose-500 (stands out)
+  - OPEN: bg-white/8 backdrop-blur-sm border-pink-300/40 (glass)
+  - Smooth open/close: CSS grid-template-rows trick (0fr → 1fr)
+  - Pink divider line inside open answer
+  - + icon → rotate-45 = × on open (CSS only, no Framer Motion)
+
+FAQ content updated to platform-relevant questions:
+  Areas served / Booking process / Discretion / Profiles /
+  Rates / Payment methods
+
+
+11. app/(website)/components/WelcomePopup.tsx
+----------------------------------------------
+COMPLETE REDESIGN:
+- Card: bg-gradient-to-br from-rose-950 via-pink-950 to-rose-900
+- Border: border-pink-300/20 + pink glow shadow
+- rounded-2xl (was rounded-xl)
+- Top/bottom glow lines (via-pink-400/60)
+- Logo: gradient text (Swati = pink-200→white, Kaur = pink-400→rose-300)
+- Decorative "─── Premium Companion ───" divider
+- Close button: gradient from-pink-500 to-rose-500 rounded-lg
+- Call button: gradient from-pink-500 to-rose-500 + hover scale
+- WhatsApp button: bg-green-600/90 + border + hover scale
+
+
+12. app/(website)/components/Footer.tsx
+-----------------------------------------
+UPDATED:
+- Top divider: h-[3px] double-layer (pink gradient + white blur glow)
+  — more visible than previous h-px
+- Padding: px-8 md:px-12 lg:px-20 (matches all sections)
+  was: px-7 md:px-24 lg:px-8 (inconsistent)
+- Grid: grid-cols-1 sm:grid-cols-2 lg:grid-cols-12
+- 4 columns: Brand (4) | Quick Links (2) | Contact (3) | Newsletter (3)
+- Social icons: hover → gradient from-pink-500 to-rose-500
+- Bottom bar: border-pink-300/20 divider
+  Copyright left | "Designed with ♥ by ByteCloude" right
+
+
+================================================================
+FILES CHANGED — SESSION 2 (2026-03-27)
+================================================================
+
+13. app/(website)/services/page.tsx
+------------------------------------
+COMPLETE CARD REDESIGN (hover reveal style):
+- h-72 cards, number badge top-left, "Premium" pill top-right
+- Overlay deepens on hover, description + button slide up
+- Gradient button: from-pink-500 to-rose-500
+
+
+14. app/(website)/components/ModelCards.tsx  [Session 2]
+---------------------------------------------------------
+PROBLEM FIXED — Cards blending into bright pink background:
+  - border-white/30 + shadow-[0_8px_32px_rgba(0,0,0,0.45)]
+  - hover:-translate-y-1.5
+HOVER ANIMATION FIXED — opacity-only transition (no jank)
+OVERLAY TEXT IMPROVED — larger name, pill badges, readable desc
+
+
+================================================================
+FILES CHANGED — SESSION 3 (2026-03-28)
+================================================================
+
+15. app/(website)/blogs/[slug]/page.tsx
+----------------------------------------
+COMPLETE REDESIGN:
+- Unified card: image + content as one rounded-2xl card
+- Image: rounded-t only, gradient from-rose-950 at bottom
+- Date badge: top-left glass pill on image
+- Content: bg-white/8 backdrop-blur-sm (transparent glass)
+- Title: inside content area (below image, not overlaid)
+- Article label + pink vertical bar divider
+- Footer: published date + "All Blogs" gradient button
+- "← Back to Blogs" link at top
+
+
+16. app/api/models/route.ts
+----------------------------
+- orderBy: createdAt "desc" → id "asc"
+  (admin table now shows ID 1,2,3... order)
+
+
+17. app/api/blogs/route.ts
+---------------------------
+- orderBy: createdAt "desc" → id "asc"
+  (admin table now shows ID 1,2,3... order)
+
+
+18. app/(admin)/dashboard/blogs/create/CreateBlogForm.tsx
+----------------------------------------------------------
+RICH TEXT EDITOR FIX:
+- Removed overflow: 'hidden' from Quill wrapper div
+  (was hiding toolbar after paste)
+- height: '330px' → minHeight: '380px'
+  (editor now grows with content, toolbar always visible)
+
+
+================================================================
+PAGE-LEVEL THEME STATUS
+================================================================
+
+- app/(website)/page.tsx          → DONE — site-bg wrapper applied
+- app/(website)/services/page.tsx → DONE — new card design applied
+- app/(website)/models/page.tsx   → Uses ModelCards (themed).
+                                     No page-level site-bg wrapper yet.
+- app/(website)/blogs/page.tsx    → Uses BlogCards (themed).
+                                     No page-level site-bg wrapper yet.
+- app/(website)/blogs/[slug]/page.tsx → DONE — full redesign
+- app/(website)/rates/page.tsx    → NOT UPDATED — old theme
+- Admin dashboard                 → NOT UPDATED — old theme
+
+
+================================================================
+MOBILE TESTING STATUS
+================================================================
+
+- Navbar (mobile menu)  → tested — backdrop-blur + pink border applied
+- HeroSection           → not tested (component disabled)
+- AboutUs               → not tested on device
+- ModelCards            → not tested on device — mobile tap overlay exists
+- BlogCards             → not tested on device
+- Testimonial           → Swiper breakpoints set (1/2 cols), not tested
+- FAQSection            → not tested on device
+- Footer                → not tested — sm:grid-cols-2 (needs check)
+- Services page         → not tested on device
+
+
+================================================================
+CONSISTENT DESIGN PATTERNS
+================================================================
+
+Section Padding (all sections):
+  pt-16 pb-20 px-8 md:px-12 lg:px-20
+  NO max-w wrapper inside — padding controls width
+
+Section Headers (all sections):
+  <span> w-8 h-[2px] bg-white/60 </span> TITLE <span> same </span>
+  On dark bg: text-pink-300 + bg-pink-400
+  On bright bg: text-white/80 + bg-white/60
+
+Card Types:
+  A) Glass (BlogCards, FAQs open state, blog detail content)
+     bg-white/8~12 backdrop-blur-sm border-white/20
+  B) Dark Rose (Testimonial cards, FAQ left box, WelcomePopup)
+     bg-gradient-to-br from-rose-950 via-pink-950 to-rose-900
+     border-pink-400/25~30
+  C) Solid Gradient (FAQ closed, blog bottom bar, CTA buttons)
+     bg-gradient-to-r from-pink-500 to-rose-500
+  D) Hover Reveal (service cards)
+     h-72 + content slides up on hover
+  E) Model Cards (image cards with dark overlay)
+     border-white/30 + shadow dark + rose-950 hover overlay
+
+Gradient Buttons:
+  bg-gradient-to-r from-pink-500 to-rose-500
+  hover:shadow-lg hover:shadow-pink-500/40 hover:scale-105
+
+Two-Column Layouts (FAQ + Testimonial):
+  Left box: 33-36% dark rose card with pink border + cut corner
+  Right: flex-1 content / accordion
+
+
+================================================================
+PENDING / COMMENTED OUT
+================================================================
+
+- HeroSection    → commented in page.tsx (theme applied, ready)
+- WelcomePopup   → commented in page.tsx
+- Navbar         → commented in layout.tsx
+- Footer         → commented in layout.tsx
+- ActionButtons  → commented in layout.tsx
+- Rates page nav → commented in Navbar menu array
+
+
+================================================================
+NEXT STEPS (by priority)
+================================================================
+
+BLOCKERS / HIGH PRIORITY:
+1. Uncomment Navbar + Footer in layout.tsx
+2. Enable HeroSection + WelcomePopup in page.tsx
+3. Add site-bg wrapper to /models and /blogs pages
+4. Test mobile responsiveness — Footer grid, ModelCards tap overlay
+
+MEDIUM PRIORITY:
+5. Update /rates page with pink theme
+6. Replace placeholder content with real text
+7. Update real phone/email in Footer + contact details
+
+LOW PRIORITY / OPTIONAL:
+8. Update admin dashboard theme
+9. Add Framer Motion animations site-wide (planned for future)
+
+================================================================
