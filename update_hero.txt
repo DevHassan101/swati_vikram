@@ -1,0 +1,66 @@
+===================================================
+  HERO SECTION - CHANGES LOG
+===================================================
+
+FILE: app/(website)/components/HeroSection.tsx
+FILE: app/layout.tsx
+
+---------------------------------------------------
+1. FONTS ADDED (layout.tsx)
+---------------------------------------------------
+- Cinzel       → LET'S + PARTY heading (bold, dramatic, elegant)
+- Dancing Script → "Tonight" (romantic cursive)
+- Added as CSS variables: --font-cinzel, --font-dancing
+- Applied via: fontFamily: 'var(--font-cinzel / --font-dancing)'
+
+---------------------------------------------------
+2. MOBILE & TABLET - FULL BACKGROUND IMAGE
+---------------------------------------------------
+- Added a new div (block lg:hidden) with absolute inset-0
+- model1.png fills entire hero section on mobile/tablet
+- object-cover object-top → model ka face upar se dikhe
+- Desktop layout (lg+) bilkul same hai
+
+---------------------------------------------------
+3. MOBILE TEXT BOX - GLASSMORPHISM
+---------------------------------------------------
+- backdrop-blur-sm
+- bg-pink-950/40
+- border-t border-x border-pink-300/20
+- rounded-t-3xl
+- Decorative pink line added above heading (block lg:hidden)
+
+---------------------------------------------------
+4. PARTY TEXT
+---------------------------------------------------
+- Back layer  : text-pink-100 opacity-60 (shadow effect)
+- Front layer : text-white + pink glow textShadow
+  → textShadow: 0 0 20px rgba(236,72,153,1), 0 0 40px rgba(236,72,153,0.7)
+- font-black weight (heavier than extrabold)
+- Font: Cinzel
+
+---------------------------------------------------
+5. TONIGHT TEXT
+---------------------------------------------------
+- Font: Dancing Script (romantic cursive)
+- Size: text-2xl lg:text-4xl
+- Color: text-pink-100
+
+---------------------------------------------------
+6. PARA TEXT
+---------------------------------------------------
+- Content changed from lorem ipsum to:
+  "Your ultimate destination for premium companionship &
+   unforgettable nights. Glamour, elegance & pure entertainment await you."
+- tracking-wide added
+
+---------------------------------------------------
+7. BUTTON REDESIGN
+---------------------------------------------------
+- bg-gradient-to-r from-pink-500 to-rose-500
+- hover: from-pink-400 to-rose-400
+- transition-all duration-300
+- Icon span: bg-white/20 → group-hover:bg-white/30
+- rounded-full, shadow-lg
+
+===================================================
